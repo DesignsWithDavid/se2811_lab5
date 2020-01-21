@@ -11,4 +11,6 @@ public interface Layer {
 
     public int numLayers();
 
+    public int maxNodes();
+
 }

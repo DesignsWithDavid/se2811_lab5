@@ -2,8 +2,7 @@ package gonzalez_salzwedelda;
 
 import javafx.scene.canvas.Canvas;
 
-import static gonzalez_salzwedelda.DrawingHelp.drawEdge;
-import static gonzalez_salzwedelda.DrawingHelp.drawNode;
+import static gonzalez_salzwedelda.NodeDraw.*;
 
 public class IdentityLayer implements Layer{
     private int outputSize;
@@ -26,22 +25,16 @@ public class IdentityLayer implements Layer{
 
     @Override
     public void draw(Canvas canvas) {
-        double height = canvas.getHeight();
-        double offset = 120;
-        double spacing = (height-offset*2)/(inputSize);
-
-
-        drawNode(canvas, offset, spacing);
-
-        for (int i = 1; i <= inputSize; i++){
-            drawNode(canvas, offset, (i+1)*spacing);
-            drawEdge(canvas, offset, i*spacing, offset, (i+1)*spacing);
-        }
-
+        drawNodes(canvas, outputSize);
     }
 
     @Override
     public int numLayers() {
         return 1;
+    }
+
+    @Override
+    public int maxNodes() {
+        return outputSize;
     }
 }

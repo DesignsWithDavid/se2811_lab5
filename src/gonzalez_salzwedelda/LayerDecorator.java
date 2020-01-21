@@ -26,4 +26,8 @@ public abstract class LayerDecorator implements Layer{
     public Layer getDecoratedLayer(){
         return decoratedLayer;
     }
+
+    public int maxNodes(){
+        return Math.max(decoratedLayer.maxNodes(), outputSize);
+    }
 }

@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.canvas.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gonzalez_salzwedelda.NetworkCanvasController">
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gonzalez_salzwedelda.NetworkCanvasController">
    <top>
       <ToolBar prefHeight="40.0" BorderPane.alignment="CENTER">
         <items>
-            <ToggleButton fx:id="alexLike" text="AlexNet-Like" onAction="#showNetwork">
+            <ToggleButton fx:id="alexLike" onAction="#showNetwork" text="AlexNet-Like">
                <toggleGroup>
                   <ToggleGroup fx:id="network" />
                </toggleGroup>
             </ToggleButton>
-            <ToggleButton fx:id="inceptionLike" text="Inception-Like"
-                          toggleGroup="$network" onAction="#showNetwork">
+            <ToggleButton fx:id="inceptionLike" onAction="#showNetwork" text="Inception-Like" toggleGroup="$network">
             </ToggleButton>
+            <ToggleButton fx:id="surprise" mnemonicParsing="false" onAction="#showNetwork" text="Surprise" toggleGroup="$network" />
         </items>
       </ToolBar>
    </top>
    <center>
-      <Canvas fx:id="canvas" width="850" height="650" BorderPane.alignment="CENTER" />
+      <Canvas fx:id="canvas" height="650" width="850" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

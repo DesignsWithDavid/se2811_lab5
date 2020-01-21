@@ -2,6 +2,8 @@ package gonzalez_salzwedelda;
 
 import javafx.scene.canvas.Canvas;
 
+import static gonzalez_salzwedelda.NodeDraw.*;
+
 public class ConvolutionalLayerDecorator extends LayerDecorator{
     public ConvolutionalLayerDecorator(Layer decoratedLayer){
         super(decoratedLayer, decoratedLayer.outputSize());
@@ -10,6 +12,7 @@ public class ConvolutionalLayerDecorator extends LayerDecorator{
     @Override
     public void draw(Canvas canvas) {
         super.getDecoratedLayer().draw(canvas);
-        //TODO
+        directConnectNodes(canvas, outputSize());
+        drawNodes(canvas, outputSize());
     }
 }
