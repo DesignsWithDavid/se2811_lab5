@@ -19,7 +19,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("networkCanvas.fxml"));
         primaryStage.setTitle("Neural Network Generator");
-        primaryStage.setScene(new Scene(root, 850, 650));
+        primaryStage.setScene(new Scene(root, 850, 250));
         primaryStage.show();
     }
 

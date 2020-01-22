@@ -17,9 +17,7 @@ public class FullyConnectedLayerDecorator extends LayerDecorator {
         double inputInterval = height / (getDecoratedLayer().outputSize() + 2);
         double outputInterval = height / (outputSize() + 2);
 
-        for (int i = 1; i <= outputSize(); i++){
-            canvas.getGraphicsContext2D().strokeOval(xPosition- radius,(i*outputInterval)- radius,2* radius,2* radius);
-        }
+        drawNodes(canvas, xPosition, outputInterval, radius);
 
         for (int i = 1; i <= getDecoratedLayer().outputSize(); i++){
             for (int j = 1; j <= outputSize(); j++){

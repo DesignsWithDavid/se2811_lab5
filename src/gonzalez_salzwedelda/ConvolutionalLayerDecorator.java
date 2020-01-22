@@ -15,9 +15,7 @@ public class ConvolutionalLayerDecorator extends LayerDecorator{
         double radius = height/(maxNodes*5);
         double interval = height / (outputSize() + 2);
 
-        for (int i = 1; i <= outputSize(); i++){
-            canvas.getGraphicsContext2D().strokeOval(xPosition- radius,(i*interval)- radius,2* radius,2* radius);
-        }
+        drawNodes(canvas, xPosition, interval, radius);
 
         for (int i = 1; i <= outputSize(); i++){
             drawLine(canvas,xPosition,(i*interval), xPosition-width/(numLayers),(i*interval), radius);

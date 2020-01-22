@@ -32,6 +32,8 @@ public class NetworkCanvasController {
     private void showNetwork(ActionEvent actionEvent) {
         ToggleButton source = (ToggleButton)actionEvent.getSource();
         String id = source.getId();
+        canvas.setHeight(canvas.getScene().getHeight());
+        canvas.setWidth(canvas.getScene().getWidth());
         // Clear Canvas: https://stackoverflow.com/q/27203671/1048186
         GraphicsContext context = canvas.getGraphicsContext2D();
         context.setLineWidth(3);

@@ -40,6 +40,12 @@ public abstract class LayerDecorator implements Layer{
         draw(canvas, maxNodes(), numLayers(), xPosition);
     }
 
+    public void drawNodes(Canvas canvas, double xPosition, double interval, double radius){
+        for (int i = 1; i <= outputSize(); i++){
+            canvas.getGraphicsContext2D().strokeOval(xPosition- radius,(i*interval)- radius,2* radius,2* radius);
+        }
+    }
+
     public void drawLine(Canvas canvas, double x1, double y1, double x2, double y2, double nodeRadius){
         GraphicsContext context = canvas.getGraphicsContext2D();
         Point2D p1 = new Point2D(x1, y1);
