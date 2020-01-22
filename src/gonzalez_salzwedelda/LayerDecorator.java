@@ -1,5 +1,9 @@
 package gonzalez_salzwedelda;
 
+import javafx.geometry.Point2D;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+
 public abstract class LayerDecorator implements Layer{
     private Layer decoratedLayer;
     private int outputSize;
@@ -29,5 +33,21 @@ public abstract class LayerDecorator implements Layer{
 
     public int maxNodes(){
         return Math.max(decoratedLayer.maxNodes(), outputSize);
+    }
+
+    public void draw(Canvas canvas) {
+        double xPosition = canvas.getWidth() - canvas.getWidth()/(numLayers() + 2);
+        draw(canvas, maxNodes(), numLayers(), xPosition);
+    }
+
+    public void drawLine(Canvas canvas, double x1, double y1, double x2, double y2, double nodeRadius){
+        GraphicsContext context = canvas.getGraphicsContext2D();
+        Point2D p1 = new Point2D(x1, y1);
+        Point2D p2 = new Point2D(x2, y2);
+        Point2D direction = p2.subtract(p1).normalize();
+        Point2D radius = direction.multiply(nodeRadius);
+        Point2D start = p1.add(radius);
+        Point2D end = p2.subtract(radius);
+        context.strokeLine(start.getX(), start.getY(), end.getX(), end.getY());
     }
 }

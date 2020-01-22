@@ -16,8 +16,6 @@ import javafx.scene.control.ToggleButton;
 import java.util.HashMap;
 import java.util.Map;
 
-import static gonzalez_salzwedelda.NodeDraw.*;
-
 
 /**
  * The controller for the main window.
@@ -42,7 +40,6 @@ public class NetworkCanvasController {
             System.out.println("Warning: Unknown network id:"+id);
         } else {
             Layer network = networks.get(id);
-            setDrawingCharacteristics(canvas.getWidth(), canvas.getHeight(), network.numLayers(), network.maxNodes());
             network.draw(canvas);
         }
     }
@@ -87,7 +84,10 @@ public class NetworkCanvasController {
     private Layer createSurprise() {
         Layer identity = new IdentityLayer(2);
         Layer layer1 = new FullyConnectedLayerDecorator(identity, 4);
-        return new ConvolutionalLayerDecorator(layer1);
+        Layer layer2 = new FullyConnectedLayerDecorator(layer1, 8);
+        Layer layer3 = new FullyConnectedLayerDecorator(layer2, 4);
+        Layer layer4 = new FullyConnectedLayerDecorator(layer3, 2);
+        return new ConvolutionalLayerDecorator(layer4);
     }
 
 

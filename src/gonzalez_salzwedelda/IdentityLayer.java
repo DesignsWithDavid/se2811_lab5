@@ -2,11 +2,10 @@ package gonzalez_salzwedelda;
 
 import javafx.scene.canvas.Canvas;
 
-import static gonzalez_salzwedelda.NodeDraw.*;
 
 public class IdentityLayer implements Layer{
     private int outputSize;
-    private int inputSize = 0;
+    private int inputSize;
 
     public IdentityLayer(int size){
         outputSize = size;
@@ -25,7 +24,20 @@ public class IdentityLayer implements Layer{
 
     @Override
     public void draw(Canvas canvas) {
-        drawNodes(canvas, outputSize);
+        double xPosition = canvas.getWidth() - canvas.getWidth()/(numLayers() + 2);
+        draw(canvas, maxNodes(), numLayers(), xPosition);
+    }
+
+    @Override
+    public void draw(Canvas canvas, int maxNodes, int numLayers, double xPosition) {
+        double height = canvas.getHeight();
+        double radius = height/(maxNodes*5);
+        double interval = height / (outputSize() + 2);
+
+        for (int i = 1; i <= outputSize; i++){
+            canvas.getGraphicsContext2D().strokeOval(xPosition- radius,(i*interval)- radius,2* radius,2* radius);
+        }
+
     }
 
     @Override

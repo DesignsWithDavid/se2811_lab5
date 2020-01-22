@@ -9,6 +9,8 @@ public interface Layer {
 
     public void draw(Canvas canvas);
 
+    public void draw(Canvas canvas, int maxNodes, int numLayers, double xPosition);
+
     public int numLayers();
 
     public int maxNodes();
