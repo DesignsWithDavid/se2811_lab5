@@ -1,14 +1,33 @@
+/*
+ * Course:     SE 2811
+ * Term:       Winter 2019-20
+ * Assignment: Lab 4: Decorators
+ * Author: David Gonzalez
+ * Date: 01/18/20
+ */
 package gonzalez_salzwedelda;
 
 import javafx.scene.canvas.Canvas;
 
 
 public class FullyConnectedLayerDecorator extends LayerDecorator {
+    /**
+     * Constructor
+     * @param decoratedLayer the layer being decorated
+     * @param outputSize the number of nodes in the new layer
+     */
     public FullyConnectedLayerDecorator(Layer decoratedLayer, int outputSize) {
         super(decoratedLayer, outputSize);
     }
 
 
+    /**
+     * Draw nodes and their connections of a single layer based on the input parameters
+     * @param canvas the canvas to be drawn on
+     * @param maxNodes the number of nodes in the largest layer of the network
+     * @param numLayers the number of layers in the network
+     * @param xPosition the current x-position where the layer of nodes is to be drawn
+     */
     @Override
     public void draw(Canvas canvas, int maxNodes, int numLayers, double xPosition) {
         double height = canvas.getHeight();
